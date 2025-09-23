@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	scroll-behavior: smooth;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem; /* optional */
+  font-weight: 600;
+
+  background: linear-gradient(to right, #e7fa15, #9e0707); /* yellow → pink */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem; /* optional */
+  font-weight: 800;
+  background: linear-gradient(to right, #fa1519, #462bf6); /* pink → orange-red */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* index.css */
+
+.buttonStyle {
+  @apply bg-gradient-to-r from-[rgb(220,38,38)] to-[rgb(37,99,235)] 
+         hover:from-[rgb(185,28,28)] hover:to-[rgb(29,78,216)] 
+         text-white font-bold py-3 px-6 rounded-2xl shadow-md transition duration-300;
+}
+
+
+
