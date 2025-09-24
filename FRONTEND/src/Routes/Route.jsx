@@ -2,41 +2,29 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "./ErrorPage";
-import Dashboard from "../Pages/Dashboard/dashboard";
-// import Dashboard from "../Pages/Dashboard/Dashboard";
+import Dashboard from "../Pages/Dashboard"; 
+import IdeaChat from "../Pages/IdeaChat";   
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
-    errorElement: <ErrorPage></ErrorPage>,
+    element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
-        element: <Home></Home>,
+        index: true,           
+        element: <Home />,
       },
       {
-        path: "/dashboard",
-        element: <Dashboard></Dashboard>
-      }
-      // {
-      //   path: "/blog",
-      //   element: <Blog></Blog>
-      // },
-      // {
-      //   path: "/contact",
-      //   element: <About></About>,
-      // },
-      // {
-      //   path: "/blog/:id", 
-      //   element: <FeaturedCardDetails></FeaturedCardDetails>,
-      // },
-      // {
-      //   path: "/enroll", 
-      //   element: <Enroll></Enroll>
-      // }
-      
+        path: "dashboard",        
+        element: <Dashboard />,
+      },
+      {
+        path: "ideas/:id/chat",   
+        element: <IdeaChat />,
+      },
     ],
   },
 ]);
+
 export default routes;
