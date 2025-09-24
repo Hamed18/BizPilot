@@ -11,8 +11,11 @@ const IdeaForm = () => {
     description: "",
     location: "",
     budget: "",
+    category: "",
+    file: null,
   });
   const [isListening, setIsListening] = useState(false);
+
   const recognition =
     "webkitSpeechRecognition" in window
       ? new window.webkitSpeechRecognition()
@@ -20,7 +23,12 @@ const IdeaForm = () => {
 
   // Handle input change
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value, files } = e.target;
+    if (name === "file") {
+      setForm({ ...form, file: files[0] });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   // Voice input (only for description field)
@@ -58,7 +66,7 @@ const IdeaForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted Idea:", form);
-    // Redirect to dashboard after submit
+    // Later: send to backend (with FormData for file upload)
     navigate("/dashboard");
   };
 
@@ -94,9 +102,9 @@ const IdeaForm = () => {
           />
         </div>
 
-        {/* Description + Voice */}
+        {/* Short Description + Voice */}
         <div>
-          <label className="block text-lg font-semibold mb-2">Description</label>
+          <label className="block text-lg font-semibold mb-2">Short Description</label>
           <div className="flex gap-2">
             <textarea
               name="description"
@@ -144,6 +152,37 @@ const IdeaForm = () => {
             placeholder="e.g., 50000"
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
+          />
+        </div>
+
+        {/* Category */}
+        <div>
+          <label className="block text-lg font-semibold mb-2">Category</label>
+          <select
+            name="category"
+            value={form.category}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          >
+            <option value="">Select category</option>
+            <option value="tech">Technology</option>
+            <option value="fashion">Fashion</option>
+            <option value="food">Food & Beverage</option>
+            <option value="health">Health & Wellness</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        {/* File Upload (Image/PDF) */}
+        <div>
+          <label className="block text-lg font-semibold mb-2">Upload (Image or PDF)</label>
+          <input
+            type="file"
+            name="file"
+            accept="image/*,.pdf"
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 

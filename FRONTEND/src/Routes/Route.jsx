@@ -1,12 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
-import Event from "../Pages/Events/Event";
 import ErrorPage from "./ErrorPage";
-import About from "../Pages/Contact/About";
-import Blog from "../Pages/Blog/Blog"; 
-import FeaturedCardDetails from "../Pages/Blog/FeaturedCardDetails";
-import Enroll from "../Pages/Enroll/Enroll";
+import Dashboard from "../Pages/Dashboard/dashboard";
+// import Dashboard from "../Pages/Dashboard/Dashboard";
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -17,10 +15,10 @@ const routes = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      // {
-      //   path: "/events",
-      //   element: <Event></Event>,
-      // },
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>
+      }
       // {
       //   path: "/blog",
       //   element: <Blog></Blog>
