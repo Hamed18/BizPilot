@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div>
-        <h3 className="text-center">Go On</h3>
+        <h3 className="text-center">BitzPilot</h3>
       </div>
         
     </>
